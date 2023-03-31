@@ -1,0 +1,58 @@
+#D:/Documents/INFORMACION HECTOR MERIDA/MAESTRIA 2023 USAC/SCRIPING R/25-03-23/primary_results.csv
+```{r}
+dataset_results <- read.csv("D:/Documents/INFORMACION HECTOR MERIDA/MAESTRIA 2023 USAC/SCRIPING R/25-03-23/primary_results.csv")
+
+
+library(gapminder)
+library(dplyr)
+
+
+
+dataset_results
+
+dataset_results %>%
+  #  filter(year == 1957)
+  
+
+  
+# ejercicio 1  
+ dataset_results %>%
+  filter(state == "Florida") 
+  
+ 
+#ejercicio 2.1
+  dataset_results %>%
+  filter(candidate == "Hillary Clinton" | candidate == "Donald Trump" ) 
+  
+ #ejercicio 2.2
+  dataset_results %>%
+  filter(party == "Democrat" & county == "Shelby" ) 
+  
+  
+   #ejercicio 2.3
+  dataset_results %>%
+  filter(state == "Alabama" & votes >1500 ) 
+   
+  
+  #Ejercicio 3
+  
+ 
+dataset_results_2 <- dataset_results %>%
+filter(state == "Texas" & county == "Denton" ) 
+dataset_results_3 <- ( select(dataset_results_2,  5: 7)  )
+arrange(dataset_results_3, desc(votes))
+
+
+
+
+  #Ejercicio 4
+
+dataset_results_4 <-  dataset_results %>%
+filter(party == "Republican" & candidate == "Ted Cruz" & state == "Alaska" ) %>%
+mutate(vote_count = votes/fraction_votes) 
+arrange(dataset_results_4, desc(vote_count))
+
+
+   
+
+````
